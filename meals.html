@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Fontawesome/css/all.min.css"/>
+    <link rel="stylesheet" href="responsive.css">
+    <script src="J-Query/jquery-3.7.0.min.js"></script>
+    <title>Meal Plans</title>
+</head>
+<body>
+    <section class="mainoard">
+
+        <section id="menu">
+            <div class="logo">
+                <h2>MyFitness Assistant</h2>
+            </div>
+            <div class="items">
+                <li class="active" >
+                    <a href="UserDashboard.html"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+                </li>
+                <li> 
+                    <a href="meals.html"><i class="fa-solid fa-bowl-food"></i>Meal Plans</a>
+                </li>
+                <li>
+                    <a href="community.html"><i class="fa-solid fa-users"></i>Community</a>
+                </li>
+                <li>
+                    <a href="report.html"><i class="fa-solid fa-chart-line"></i>Report</a>
+                </li>
+                <li>
+                    <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+                </li>
+            </div>
+        </section>
+        <section id="iterface">
+            <div class="navigation">
+                <div class="n1">
+                    <div class="n2">
+                        <div>
+                            <i id="menubar" class="fa-solid fa-bars"></i>
+                        </div>
+                        <div class="pagetitle"><h2>Meal Plans</h2></div>
+                    </div>
+                
+                    <div class="profile">
+                        <i class="fa-regular fa-bell"></i>
+                        <img src="images/food1.JPG" alt="profile">
+                    </div>
+                </div>
+
+            </div>
+           
+            <div class="userboard">
+                <div class="userboard1">
+                    <div class="meals">
+                        <h1>Daily Meal Plan</h1>
+                        <div class="mealcards">
+                            <div class="mealcard">
+                                <p>Day 1</p>
+                            </div>
+                            <div class="mealcard">
+                                <p>Day 2</p>
+                            </div>
+                            <div class="mealcard">
+                                <p>Day 3</p>
+                            </div>
+                            <div class="mealcard">
+                                <p>Day 4</p>
+                            </div>
+                            <div class="mealcard">
+                                <p>Day 5</p>
+                            </div>
+                            <div class="mealcard">
+                                <p>Day 6</p>
+                            </div>
+                            <div class="mealcard">
+                                <p>Day 7</p>
+                            </div>
+                            <div class="mealcard">
+                                <p>Day 8</p>
+                            </div>
+                            <div class="mealcard">
+                                <p>Day 9</p>
+                            </div>
+                            <div class="mealcard">
+                                <p>Day 10</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="userboard2">
+                   <div class="shoppinglist">
+                    <h1>Weekly Shoping List</h1>
+                    <p>There is no Shopping List selected.</p>
+                   </div>
+                </div>
+            </div>
+            
+        </section>
+     
+    </section>
+    
+    <script>
+        //responsive elements
+        let menu = document.querySelector("#menu");
+        let menubar = document.querySelector("#menubar");
+
+        menubar.addEventListener("click", () =>{
+             menu.classList.toggle("activee");
+        });
+
+        
+    </script>
+</body>
+</html>

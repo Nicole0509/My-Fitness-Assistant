@@ -1,0 +1,140 @@
+@media (max-width: 821px) {
+
+    /*Landing Page*/
+    
+    .header {
+        background-size: 830px 670px;
+    }
+
+    .headerheading {
+        padding: 0px 25px 0px 20px;
+    }
+
+    .headerheading h3 {
+        font-size: 25px;
+    }
+
+    #navbar {
+        font-size: 25px;
+    }
+
+    #hero {
+        margin-top: 80px;
+    }
+
+    #hero h1 {
+        font-size: 50px;
+    }
+
+    #hero p {
+        font-size: 50px;
+    }
+
+    #services table {
+        width: 80%;
+        margin: 5px;
+    }
+
+    #services table img {
+        width: 300px;
+        height: 150px;
+    }
+
+    footer {
+        margin-bottom: 0;
+    }
+
+    footer p {
+        
+        font-size: 25px;
+        padding: 20px 0 10px 0;
+    }
+
+    /*Admin dashboard*/
+    #menu {
+        width: 220px;
+        position: fixed;
+        left: -220px;
+        transition: 0.3s ease;
+    }
+
+    #menu.activee{
+        left: 0px;
+    }
+
+    #menubar{
+        display: initial;
+    }
+
+    #iterface {
+        width: 100%;
+        margin-left: 0px;
+        display: inline-block;
+        transition: 0.3s ease;
+    }
+
+    #menu.activee~#iterface{
+        width: calc(100% - 220px);
+        margin-left: 220px;
+        transition: 0.3s ease;
+    }
+
+    #iterface .navigation .n1 {
+        width: 92%;
+    }
+
+    .values {
+        padding: 10px 30px 0px 40px;
+        justify-content: flex-start;
+    }
+
+    .values .valuebox { 
+        padding: 10px 20px;
+        margin: 10px 30px 10px 0px;
+    }
+
+    .board {
+        width: 92%;
+        padding: 0;
+        overflow: auto;
+    }
+
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+}
+
+
+@media (max-width: 477px) {
+    #iterface .navigation .n1 {
+        padding: 15px;
+    }
+
+    #iterface .navigation .n1 .profile img {
+        width: 35px;
+        height: 35px;
+        
+    }
+
+    #iterface .navigation .n1 .search {
+        width: 150px;
+    }
+    
+    .boardtitle {
+        padding: 20px 15px 0px 15px;
+    }
+
+    .values {
+        padding: 10px 15px 0px 15px;
+    }
+
+    .values .valuebox {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .board {
+        margin: 30px 15px 30px 15px;
+    }
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Fontawesome/css/all.min.css"/>
+    <link rel="stylesheet" href="responsive.css">
+    <script src="J-Query/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Dashboard</title>
+</head>
+<body>
+    <section class="mainoard">
+
+        <section id="menu">
+            <div class="logo">
+                <h2>MyFitness Assistant</h2>
+            </div>
+            <div class="items">
+                <li>
+                    <a class="active" href="UserDashboard.html"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+                </li>
+                <li> 
+                    <a href="meals.html"><i class="fa-solid fa-bowl-food"></i>Meal Plans</a>
+                </li>
+                <li>
+                    <a href="community.html"><i class="fa-solid fa-users"></i>Community</a>
+                </li>
+                <li>
+                    <a href="report.html"><i class="fa-solid fa-chart-line"></i>Report</a>
+                </li>
+                <li>
+                    <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+                </li>
+            </div>
+        </section>
+        <section id="iterface">
+            <div class="navigation">
+                <div class="n1">
+                    <div class="n2">
+                        <div>
+                            <i id="menubar" class="fa-solid fa-bars"></i>
+                        </div>
+                        <div class="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search">
+                        </div>
+                    </div>
+                
+                    <div class="profile">
+                        <i class="fa-regular fa-bell"></i>
+                        <img src="images/food1.JPG" alt="profile">
+                    </div>
+                </div>
+
+            </div>
+           
+            <div class="userboard">
+                <div class="userboard1">
+                    <div class="grettingbox">
+                        <p> <strong> Hello Nicole</strong> </p>
+                        <p>Today it's a great day to be fit!</p>
+                    </div>
+                    <div class="activity">
+                        <div class="zcards">
+                            <div class="zcard">
+                                <span>
+                                    <p>Heart Rate</p>
+                                    <p><strong>72</strong> Bpm</p>
+                                </span>
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <div class="zcard">
+                                <span>
+                                    <p>Calories Burnt</p>
+                                    <p><strong>120</strong> Kcal</p>
+                                </span>
+                                <i class="fa-solid fa-fire-flame-curved"></i>
+                            </div>
+                            <div class="zcard">
+                                <span>
+                                    <p>Workout Time</p>
+                                    <p><strong>30</strong> Min</p>
+                                </span>
+                                <i class="fa-solid fa-dumbbell"></i>
+                            </div>
+                        </div>
+                        <div class="chart1">
+                            <h1>This Week's Progress</h1>
+                            <canvas id="progresschart1"></canvas>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="userboard2" style="background-color: #ddf1f0;">
+                    <h3 class="boardtitle">
+                        Profile Information
+                    </h3>
+        
+                </div>
+            </div>
+            
+        </section>
+     
+    </section>
+    
+    <script>
+        let menu = document.querySelector("#menu");
+        let menubar = document.querySelector("#menubar");
+
+        menubar.addEventListener("click", () =>{
+             menu.classList.toggle("activee");
+        });
+
+        //user dashboard
+
+        var canvasElement = document.getElementById("progresschart1");
+
+var config = {
+    type: "bar",
+    data: {
+        labels: ["Monday", "Tuesday", "Wednesday" ,"Thursday" ,"Friday" ,"Sartuday" , "Sunday"], 
+        datasets: [{ 
+            label: "Calories lost", 
+            data: [50, 83, 72, 90, 101, 60,68],
+            backgroundColor:["#ddf1f0"],
+            borderColor: ["#056963"],
+            borderWidth: 1,
+        }
+    ]
+    }
+}
+
+var progresschart1 = new Chart(canvasElement, config);
+        
+    </script>
+</body>
+</html>

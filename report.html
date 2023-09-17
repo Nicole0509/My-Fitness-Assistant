@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Fontawesome/css/all.min.css"/>
+    <link rel="stylesheet" href="responsive.css">
+    <script src="J-Query/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Report</title>
+</head>
+<body>
+    <section class="mainoard">
+
+        <section id="menu">
+            <div class="logo">
+                <h2>MyFitness Assistant</h2>
+            </div>
+            <div class="items">
+                <li class="active" >
+                    <a href="UserDashboard.html"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+                </li>
+                <li> 
+                    <a href="meals.html"><i class="fa-solid fa-bowl-food"></i>Meal Plans</a>
+                </li>
+                <li>
+                    <a href="community.html"><i class="fa-solid fa-users"></i>Community</a>
+                </li>
+                <li>
+                    <a href="report.html"><i class="fa-solid fa-chart-line"></i>Report</a>
+                </li>
+                <li>
+                    <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+                </li>
+            </div>
+        </section>
+        <section id="iterface">
+            <div class="navigation">
+                <div class="n1">
+                    <div class="n2">
+                        <div>
+                            <i id="menubar" class="fa-solid fa-bars"></i>
+                        </div>
+                        <div class="pagetitle"><h2>Report</h2></div>
+                    </div>
+                
+                    <div class="profile">
+                        <i class="fa-regular fa-bell"></i>
+                        <img src="images/food1.JPG" alt="profile">
+                    </div>
+                </div>
+
+            </div>
+           
+            <div class="userboard">
+                <div class="userboard1">
+                    <div class="calendar11">
+                        <div class="calendarhead">
+                            <div class="calendarmonth">nov</div>
+                            <div class="calendarbuttons">
+                                <div class="calendarbutton today-btn">
+                                    <i class="fa-solid fa-calendar-day"></i>
+                                </div>
+                                <div class="calendarbutton prev-btn">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </div>
+                                <div class="calendarbutton next-btn">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calendarweekdays">
+                            <div class="day">Sun</div>
+                            <div class="day">Mon</div>
+                            <div class="day">Tue</div>
+                            <div class="day">Wed</div>
+                            <div class="day">Thu</div>
+                            <div class="day">Fri</div>
+                            <div class="day">Sat</div>
+                        </div>
+                        <div class="calendardays">
+                            <!--days are added using js-->
+                        </div>
+                    </div>
+
+                    <div class="chart11">
+                        <h1>Progress Chart</h1>
+                        <canvas id="progresschart"></canvas>
+                    </div>
+                    
+                       
+                </div>
+                <div class="userboard2">
+                   <div class="reportcard">
+                    <div class="weightloss">
+                        <p id="paragraphh">30 days weight loss challenge</p>
+                        <div class="challenge">
+                            <div class="weight">
+                                <i class="fa-regular fa-circle-dot"></i>
+                                <span>
+                                    <p>Current weight</p>
+                                    <p><strong>75 kg </strong></p>
+                                </span>
+                            </div>
+                            <div class="weight">
+                                <i class="fa-solid fa-circle-arrow-right"></i>
+                                <span>
+                                    <p>Target weight</p>
+                                    <p><strong>65 kg </strong></p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weightloss">
+                        <p id="paragraphh">Well Done!</p>
+                            <div class="workoutinfo">
+                                <span>
+                                    <p>Workout</p>
+                                    <p><strong>5</strong></p>
+                                </span>
+                                <span>
+                                    <p>calories lost</p>
+                                    <p><strong>150 Kcal</strong></p>
+                                </span>
+                                <span>
+                                    <p>Time duration</p>
+                                    <p><strong>40 Minutes</strong></p>
+                                </span>
+                            </div>
+                    </div>
+                   </div>
+                   <div class="BMI">
+                    <p>Height in CM:
+                        <input type="text" id="height" placeholder="Enter your height"><br><span id="height_error" style="color: red;"></span>
+                    </p>   
+                    <p>Weight in KG:
+                        <input type="text" id="weight" placeholder="Enter your weight"><br><span id="weight_error" style="color: red;"></span>
+                    </p> 
+                    <button id="BmiCalc">Calculate</button> 
+                    <p id="output"></p>           
+                   </div>
+                </div>
+            </div>
+            
+        </section>
+     
+    </section>
+    
+    <script>
+        //responsive elements
+        let menu = document.querySelector("#menu");
+        let menubar = document.querySelector("#menubar");
+
+        menubar.addEventListener("click", () =>{
+             menu.classList.toggle("activee");
+        });
+
+        //calendar
+
+        const daysContainer = document.querySelector(".calendardays"),
+        nextBtn = document.querySelector(".next-btn"),
+        prevBtn = document.querySelector(".prev-btn"),
+        month = document.querySelector(".calendarmonth"),
+        todayBtn = document.querySelector(".today-btn");
+
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];  
+
+      const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+      //to get the current date
+        const date = new Date();
+
+      // to get the current month
+      let currentMonth = date.getMonth();
+
+      // to get the current year
+      let currentYear = date.getFullYear();
+
+      //function to render days
+      function renderCalendar(){
+        //to get the previous, current and next month
+        date.setDate(1);
+        const firstDay = new Date(currentYear,currentMonth,1);
+        const lastDay = new Date(currentYear,currentMonth + 1, 0);
+        const lastDayIndex = lastDay.getDay();
+        const lastDayDate = lastDay.getDate();
+        const prevLastDay = new Date(currentYear, currentMonth, 0);
+        const prevLastDayDate = prevLastDay.getDate();
+        const nextDays = 7 - lastDayIndex - 1;
+
+       //updating the year and month in the calendar head
+       month.innerHTML = `${months[currentMonth]} ${currentYear}`;
+
+       //update days
+       let days = "";
+
+       //previous days html
+       for (let x = firstDay.getDay(); x > 0; x--){
+        days += `<div class="day prev">${prevLastDayDate - x + 1}</div>`;
+       }
+       
+       
+       //current month days
+       for (let i = 1; i <= lastDayDate; i++){
+        //check if it is today and add the today class
+        if ( i === new Date().getDate() && 
+             currentMonth === new Date().getMonth() && 
+             currentYear === new Date().getFullYear()){
+                //if it matches add today
+                days += `<div class="day today">${i}</div>`;
+             } else {
+                //if doesn't match don't add today
+                days += `<div class="day">${i}</div>`;
+             }
+       }
+
+       
+       //next month days
+       for (let i = 1; i <= nextDays; i++){
+        
+            days += `<div class="day next">${i}</div>`;
+        
+       }
+       hideTodayBtn (); //it must be run everytime we render the calendar
+       daysContainer.innerHTML = days;
+      }
+ 
+      renderCalendar();
+
+      //next month in the queue
+      nextBtn.addEventListener("click", () =>{
+        //increase month by one
+        currentMonth++;
+        if ( currentMonth > 11){
+            //if month gets greater than 11 we'll increase the year
+            currentMonth = 0;
+            currentYear++;
+        }
+        //rerender calendar
+        renderCalendar();
+      });
+
+      //previous month in the queue
+      prevBtn.addEventListener("click", () =>{
+        //decrease month by one
+        currentMonth--;
+        if ( currentMonth < 0){
+            //if month gets less than 0 we'll decrease the year
+            currentMonth = 11;
+            currentYear--;
+        }
+        //rerender calendar
+        renderCalendar();
+      });
+
+      //go to today
+      todayBtn.addEventListener("click", () =>{
+        //set month and year to current
+        currentMonth = date.getMonth();
+        currentYear = date.getFullYear();
+        //rerender calendar
+        renderCalendar();
+      });
+
+      //to hide today buton when it's the current month and make it visible when it's not 
+      function hideTodayBtn (){
+        if(currentMonth === new Date().getMonth() &&
+           currentYear === new Date().getFullYear()
+        ){
+            todayBtn.style.display = "none";
+        } else {
+            todayBtn.style.display = "flex";
+        }
+      }
+
+             //chart
+             var canvasElement = document.getElementById("progresschart");
+
+var config = {
+    type: "bar",
+    data: {
+        labels: ["Monday", "Tuesday", "Wednesday" ,"Thursday" ,"Friday" ,"Sartuday" , "Sunday"], 
+        datasets: [{ 
+            label: "Calories lost", 
+            data: [50, 83, 72, 90, 101, 60,68],
+            backgroundColor:["#ddf1f0"],
+            borderColor: ["#056963"],
+            borderWidth: 1,
+        }
+    ]
+    }
+}
+
+var progresschart = new Chart(canvasElement, config);
+
+//BMI Calculation
+
+let bmiButton = document.getElementById('BmiCalc');
+
+bmiButton.addEventListener('click', () => {
+    const Height = parseInt(document.getElementById('height'));
+    const Weight = parseInt(document.getElementById('weight'));
+    const result = document.getElementById('output');
+    let height_status=false ,
+    weight_status=false;
+
+    if (Height === '' || Height <= 0 || isNaN(Height)){
+        document.getElementById('height_error').innerHTML = 'Please enter a valid height';
+    } else {
+        document.getElementById('height_error').innerHTML = '';
+        height_status=true;
+    }
+
+    if (Weight === '' || Weight <= 0 || isNaN(Weight)){
+        document.getElementById('weight_error').innerHTML = 'Please enter a valid weight';
+    } else {
+        document.getElementById('weight_error').innerHTML = '';
+        weight_status=true;
+    }
+
+    if (height_status && weight_status){
+        const bmi = (Weight / ((Height*Height)/10000)).toFixed(2);
+
+        if (bmi < 18.6){
+            result.innerHTML = 'Under weight :' +bmi;
+        } else if (bmi >= 18.6 && bmi <24.9){
+            result.innerHTML = 'Normal :' +bmi;
+        } else {
+            result.innerHTML = 'Over weight :' +bmi;
+        }
+    } else {
+        alert(' The Form has errors!');
+        result.innerHTML = '';
+    }
+});
+
+    </script>
+</body>
+</html>
